@@ -1,0 +1,24 @@
+#AddHandler cgi-script .php .pl .py .jsp .asp .htm .shtml .sh .cgi
+#Options -ExecCGI
+Options -Indexes 
+ErrorDocument 404  	/hatalar/index.php?hata=404
+ErrorDocument 400  	/hatalar/index.php?hata=400
+ErrorDocument 401 	/hatalar/index.php?hata=401
+ErrorDocument 403  	/hatalar/index.php?hata=403
+ErrorDocument 500  	/hatalar/index.php?hata=500
+ErrorDocument 501 	/hatalar/index.php?hata=501
+ErrorDocument 502 	/hatalar/index.php?hata=502
+ErrorDocument 503 	/hatalar/index.php?hata=503
+
+RewriteEngine On # rewrite motorunu aktive et
+
+RewriteRule "^haber/(.*)/(.*)$" "index.php?hid=$1&kisa=$2" [NC,L] 	#haber detay
+RewriteRule "^haberler/$" "index.php?haberler=$1" [NC,L]			#haber tümü
+RewriteRule "^duyuru/(.*)/(.*)$" "index.php?did=$1&kisa=$2" [NC,L] 	#duyuru detay
+RewriteRule "^duyurular/$" "index.php?duyurular=$1" [NC,L]			#duyuru tümü
+RewriteRule "^icerik/(.*)$" "index.php?iid=$1" [NC,L] 				#icerik detay
+RewriteRule "^etkinlik/(.*)$" "index.php?etkinlik=$1" [NC,L] 		#etkinlik detay
+RewriteRule "^kategori/(.*)$" "index.php?kategori=$1" [NC,L]		#kategori detay
+RewriteRule "^arama/(.*)$" "index.php?ara=$1" [NC,L]		#kategori detay
+RewriteRule "^anket/(.*)$" "index.php?anket=$1" [NC,L]		#kategori detay
+RewriteRule ^ana/?$ index.php [NC,L]
